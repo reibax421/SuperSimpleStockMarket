@@ -44,7 +44,6 @@ public class StockController {
     
     public float getGBCE() {
         OptionalDouble reduce = PersistenceStock.getInstance().getStockData().stream().mapToDouble(stockData -> getVolumeWeightedStockPrice(stockData)).reduce((double left, double right) -> left * right);
-        System.out.println("reduce = " + reduce.orElse(1));
         return (float) Math.pow(reduce.orElse(1), 1.0 / PersistenceStock.getInstance().getStockData().size());
     }
     
