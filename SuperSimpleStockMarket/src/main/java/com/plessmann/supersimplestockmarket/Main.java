@@ -5,6 +5,7 @@
  */
 package com.plessmann.supersimplestockmarket;
 
+import com.plessmann.supersimplestockmarket.controllers.DataLoader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -19,6 +20,8 @@ public class Main {
      */
     public static void main(String[] args) {
         try{
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.load();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.print(Constants.GREETING);
             String option;

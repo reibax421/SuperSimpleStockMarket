@@ -50,4 +50,8 @@ public class PersistenceStock {
         stocks.add(stock);
     }
     
+    public boolean isStockDataLoaded(){
+        return stockData.isEmpty();
+    }
+    
 }
