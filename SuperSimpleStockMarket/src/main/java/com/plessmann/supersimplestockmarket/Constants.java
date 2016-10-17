@@ -19,6 +19,7 @@ public class Constants {
     public final static String FOUR = "4";
     public final static String FIVE = "5";
     public static final String FAREWELL = "Good bye, Have a nice day";
+    public static final String COMMON = "common";
     
     
     

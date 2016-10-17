@@ -8,7 +8,6 @@ package com.plessmann.supersimplestockmarket.datasource;
 import com.plessmann.supersimplestockmarket.models.Stock;
 import com.plessmann.supersimplestockmarket.models.StockData;
 import java.util.List;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
@@ -66,10 +65,11 @@ public class PersistenceStockTest {
     @Test
     public void testDSaveStock() {
         System.out.println("saveStock");
-        Stock stock = new Stock(System.currentTimeMillis(), 1, true, 122.6f);
+        StockData stockData = PersistenceStock.getInstance().getStockData("TEA");
+        Stock stock = new Stock(System.currentTimeMillis(), 1, true, 122.6f, stockData);
         PersistenceStock.getInstance().saveStock(stock);
         long timeReference = System.currentTimeMillis() - 300000;
-        List<Stock> result = PersistenceStock.getInstance().getStockByTime(timeReference);
+        List<Stock> result = PersistenceStock.getInstance().getStockByTime(stockData, timeReference);
         assertFalse("List must not be empty", result.isEmpty());
     }
 
@@ -81,8 +81,9 @@ public class PersistenceStockTest {
     @Test
     public void testEGetStockByTime() {
         System.out.println("getStockByTime");
+        StockData stockData = PersistenceStock.getInstance().getStockData("TEA");
         long timeReference = System.currentTimeMillis() - 300000;
-        List<Stock> result = PersistenceStock.getInstance().getStockByTime(timeReference);
+        List<Stock> result = PersistenceStock.getInstance().getStockByTime(stockData, timeReference);
         assertFalse("List must not be empty", result.isEmpty());
     }
 

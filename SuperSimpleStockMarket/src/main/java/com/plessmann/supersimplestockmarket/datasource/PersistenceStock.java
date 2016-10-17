@@ -42,8 +42,8 @@ public class PersistenceStock {
         stockData.add(stockData1);
     }
     
-    public List<Stock> getStockByTime(long timeReference){
-        return stocks.stream().filter(sd -> sd.getTimestamp() > timeReference).collect(Collectors.toList());
+    public List<Stock> getStockByTime(StockData stockData, long timeReference){
+        return stocks.stream().filter(sd -> sd.getStockData().getType().equalsIgnoreCase(stockData.getType()) && sd.getTimestamp() > timeReference).collect(Collectors.toList());
     }
     
     public void saveStock(Stock stock){
@@ -53,5 +53,15 @@ public class PersistenceStock {
     public boolean isStockDataLoaded(){
         return stockData.isEmpty();
     }
+    
+    public boolean isStocksEmpty(){
+        return stockData.isEmpty();
+    }
+
+    public List<StockData> getStockData() {
+        return stockData;
+    }
+    
+    
     
 }

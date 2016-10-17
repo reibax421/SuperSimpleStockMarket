@@ -15,12 +15,14 @@ public class Stock {
     private int quantity;
     private boolean operationType;
     private float price;
+    private StockData stockData;
 
-    public Stock(long timestamp, int quantity, boolean operationType, float price) {
+    public Stock(long timestamp, int quantity, boolean operationType, float price, StockData stockData) {
         this.timestamp = timestamp;
         this.quantity = quantity;
         this.operationType = operationType;
         this.price = price;
+        this.stockData = stockData;
     }
 
     public long getTimestamp() {
@@ -54,7 +56,13 @@ public class Stock {
     public void setPrice(float price) {
         this.price = price;
     }
-    
-    
+
+    public StockData getStockData() {
+        return stockData;
+    }
+
+    public void setStockData(StockData stockData) {
+        this.stockData = stockData;
+    }
     
 }
